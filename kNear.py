@@ -2,19 +2,19 @@ import numpy as np
 import pandas as pd
 from collections import Counter
 
-# L - Load the data from CSV
+#  Load the data from CSV
 
 
 def load_data(file_path):
     return pd.read_csv(file_path)
 
-# I - Initialize the value of k
+#  Initialize the value of k
 
 
 def initialize_k():
     return 3  # Choose the number of neighbors
 
-# S - Sort distances in ascending order
+# Sort distances in ascending order
 
 
 def calculate_distances(train_data, test_point):
@@ -26,13 +26,13 @@ def calculate_distances(train_data, test_point):
     distances.sort(key=lambda x: x[0])
     return distances
 
-# K - Keep the top k nearest neighbors
+#  Keep the top k nearest neighbors
 
 
 def get_top_k_neighbors(distances, k):
     return distances[:k]
 
-# S - Select the most frequent class
+#  Select the most frequent class
 
 
 def select_most_frequent_class(neighbors):
@@ -40,7 +40,7 @@ def select_most_frequent_class(neighbors):
     most_common = Counter(neighbor_classes).most_common(1)
     return most_common[0][0]
 
-# M - Make predictions based on neighbors
+#  Make predictions based on neighbors
 
 
 def knn_predict(train_data, test_point, k):
@@ -48,7 +48,7 @@ def knn_predict(train_data, test_point, k):
     neighbors = get_top_k_neighbors(distances, k)
     return select_most_frequent_class(neighbors)
 
-# I - Iterate through each data point for classification
+#  Iterate through each data point for classification
 
 
 def classify_data(train_data, test_points, k):
@@ -58,7 +58,7 @@ def classify_data(train_data, test_points, k):
         predictions.append(predicted_class)
     return predictions
 
-# R - Return the predicted class
+#  Return the predicted class
 
 
 def main():
